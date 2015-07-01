@@ -6,7 +6,10 @@
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
-
+if ( !defined('IN_PHPBB') )
+{
+	exit;
+}
 /*
 	Returns relative path to icon
 */
@@ -57,7 +60,7 @@ function get_useragent_names($useragent)
 	$useragent = strtolower($useragent);
 
 	// Browser detection
-	$browsers = array('AWeb', 'Camino', 'Epiphany', 'Galeon', 'HotJava', 'iCab', 'MSIE', 'Chrome', 'Safari', 'Konqueror', 'Flock', 'Iceweasel', 'SeaMonkey', 'Firefox', 'Firebird', 'Netscape', 'Mozilla', 'Opera', 'Maxthon', 'PhaseOut', 'SlimBrowser');
+	$browsers = array('Edge', 'AWeb', 'Camino', 'Epiphany', 'Galeon', 'HotJava', 'iCab', 'MSIE', 'Chrome', 'Safari',	'Konqueror', 'Flock', 'Iceweasel', 'SeaMonkey', 'Firefox', 'Firebird', 'Netscape', 'Mozilla', 'Opera', 'Maxthon', 'PhaseOut', 'SlimBrowser');
 
 	$browser = ua_search_for_item($browsers, $useragent);
 
@@ -87,6 +90,11 @@ function get_useragent_names($useragent)
 				$browser_version = '';
 			}
 		}
+	}
+	// Edge to Spartan
+	if ($browser == 'Edge')
+	{
+		$browser = 'Spartan';
 	}
 
 	// System detection
@@ -124,6 +132,11 @@ function get_useragent_names($useragent)
 			elseif (substr($version, 0, 3) == 6.3)
 				$system = 'Windows 8.1';
 		}
+		elseif (substr($version, 0, 3) == 10)
+		{
+			if (substr($version, 0, 3) == 10.0)
+				$system = 'Windows 10';
+		}
 	}
 	elseif ($system == 'Mac')
 		$system = 'Macintosh';
@@ -149,10 +162,10 @@ function get_useragent_icons($useragent)
 {
 	$agent = get_useragent_names($useragent);
 
-	$result = '<img src="'.ua_get_filename($agent['system'], 'os').'" style="cursor: pointer" title="'.htmlspecialchars($agent['system']).'" alt="'.htmlspecialchars($agent['system']).'" /> <img src="'.ua_get_filename($agent['browser'], 'browser').'" style="cursor: pointer" title="'.htmlspecialchars($agent['browser'].' '.$agent['browser_version']).'" alt="'.htmlspecialchars($agent['browser']).'" /><br />';
+	$result = '<img src="'.ua_get_filename($agent['system'], 'os').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['system']).'" alt="'.utf8_htmlspecialchars($agent['system']).'" /> <img src="'.ua_get_filename($agent['browser'], 'browser').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['browser'].' '.$agent['browser_version']).'" alt="'.utf8_htmlspecialchars($agent['browser']).'" /><br />';
 
 	$description = addslashes($useragent) . '\n\nComputer System :\t\t ' . addslashes($agent['system']);
 	$description .= '\nBrowser : \t' . addslashes($agent['browser'].' '.$agent['browser_version']);
 
-	return '<span class="user-agent" onclick="alert(\'' . htmlspecialchars($description) . '\')">' . $result . '</span>';
+	return '<span class="user-agent" onclick="alert(\'' . utf8_htmlspecialchars($description) . '\')">' . $result . '</span>';
 }

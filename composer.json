@@ -2,7 +2,7 @@
 	"name": "dmzx/browsericon",
 	"type": "phpbb-extension",
 	"description": "This extension shows browser icon and OS icon in viewtopic.",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"time": "2015-06-30",
 	"keywords": ["phpbb", "extension", "browsericon"],
 	"license": "GPL-2.0",
