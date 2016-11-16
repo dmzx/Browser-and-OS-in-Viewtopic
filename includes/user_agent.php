@@ -98,7 +98,7 @@ function get_useragent_names($useragent)
 	}
 
 	// System detection
-	$systems = array('Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac');
+	$systems = array('Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac', 'Android', 'iPhone', 'Windows Phone');
 
 	$system = ua_search_for_item($systems, $useragent);
 
@@ -139,7 +139,19 @@ function get_useragent_names($useragent)
 		}
 	}
 	elseif ($system == 'Mac')
+	{
 		$system = 'Macintosh';
+	}
+	elseif ($system == 'Android')
+	{
+		$system = 'Android';
+	}
+	elseif ($system == 'iPhone')
+	{
+		$system = 'iPhone';
+	}
+	elseif ($system == 'Windows Phone')
+	      $system = 'Windows_Phone';
 
 	if (!$system)
 		$system = 'unknown';
