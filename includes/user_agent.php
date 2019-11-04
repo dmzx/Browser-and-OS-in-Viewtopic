@@ -2,7 +2,7 @@
 /**
 *
 * @package phpBB Extension - Browser & OS in Viewtopic
-* @copyright (c) 2015 dmzx - http://www.dmzx-web.net
+* @copyright (c) 2015 dmzx - https://www.dmzx-web.net
 * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
 *
 */
@@ -151,7 +151,7 @@ function get_useragent_names($useragent)
 		$system = 'iPhone';
 	}
 	elseif ($system == 'Windows Phone')
-	      $system = 'Windows_Phone';
+			$system = 'Windows_Phone';
 
 	if (!$system)
 		$system = 'unknown';

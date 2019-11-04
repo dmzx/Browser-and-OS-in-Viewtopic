@@ -2,8 +2,8 @@ services:
     dmzx.browsericon.listener:
         class: dmzx\browsericon\event\listener
         arguments:
-            - @request
-            - %core.root_path%
-            - %core.php_ext%
+            - '@request'
+            - '%core.root_path%'
+            - '%core.php_ext%'
         tags:
             - { name: event.listener }
