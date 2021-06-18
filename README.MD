@@ -1,6 +1,6 @@
 # Browser & OS in Viewtopic Extension
 
-[![Build Status](https://travis-ci.org/dmzx/Browser-and-OS-in-Viewtopic.svg?branch=master)](https://travis-ci.org/dmzx/Browser-and-OS-in-Viewtopic)
+[![Build Status](https://travis-ci.com/dmzx/Browser-and-OS-in-Viewtopic.svg?branch=master)](https://travis-ci.com/dmzx/Browser-and-OS-in-Viewtopic)
 
 ## Install
 1. Download the latest release.
