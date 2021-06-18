@@ -98,7 +98,7 @@ function get_useragent_names($useragent)
 	}
 
 	// System detection
-	$systems = array('Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac', 'Android', 'iPhone', 'Windows Phone');
+	$systems = array('Android', 'iPhone', 'Windows Phone', 'Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac');
 
 	$system = ua_search_for_item($systems, $useragent);
 
