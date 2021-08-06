@@ -3,8 +3,8 @@
 	"type": "phpbb-extension",
 	"description": "This extension shows browser icon and OS icon in viewtopic.",
 	"homepage": "https://www.dmzx-web.net",
-	"version": "1.0.2",
-	"time": "2019-11-04",
+	"version": "1.0.3",
+	"time": "2021-08-06",
 	"keywords": [
 		"phpbb",
 		"extension",
