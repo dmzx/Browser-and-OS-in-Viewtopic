@@ -19,14 +19,14 @@ class functions
 	/**
 	* Constructor
 	*
-	* @param user			$user
+	* @param user   $user
 	*
 	*/
 	public function __construct(
 		user $user
 	)
 	{
-		$this->user					= $user;
+		$this->user	= $user;
 	}
 
 	public function ua_get_filename($name, $folder)
