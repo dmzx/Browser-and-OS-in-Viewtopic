@@ -70,7 +70,7 @@ class listener implements EventSubscriberInterface
 		$rowset_data = $event['rowset_data'];
 		$row = $event['row'];
 		$rowset_data = array_merge($rowset_data, [
-			'user_agent'			=> $row['user_agent'],
+			'user_agent' => $row['user_agent'],
 		]);
 		$event['rowset_data'] = $rowset_data;
 	}
@@ -87,7 +87,7 @@ class listener implements EventSubscriberInterface
 		$row = $event['row'];
 		$post_row = $event['post_row'];
 		$post_row = array_merge($post_row, [
-			'USER_AGENT' 			=> $this->functions->get_useragent_icons($row['user_agent']),	// USER AGENT
+			'USER_AGENT' => $this->functions->get_useragent_icons($row['user_agent']),	// USER AGENT
 		]);
 		$event['post_row'] = $post_row;
 	}
