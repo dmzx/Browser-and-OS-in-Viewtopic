@@ -16,7 +16,9 @@ if ( !defined('IN_PHPBB') )
 function ua_get_filename($name, $folder)
 {
 	if (substr($name, 0, 11) == 'unknown')
+	{
 		return 'ext/dmzx/browsericon/images/user_agent/unknown.png';
+	}
 
 	$name = strtolower($name);
 	$name = str_replace(' ', '', $name); // remove spaces
@@ -68,12 +70,17 @@ function get_useragent_names($useragent)
 	if ($browser != '')
 	{
 		if ($browser == 'Opera' && strpos($useragent, 'version') !== false)
+		{
 			$browser_version = substr($useragent, strpos($useragent, 'version') + 8);
+		}
 		else
+		{
 			$browser_version = substr($useragent, strpos($useragent, strtolower($browser)) + strlen($browser) + 1);
-
+		}
 		if (preg_match('/([0-9\.]*)/', $browser_version, $matches))
+		{
 			$browser_version = $matches[1];
+		}
 	}
 
 	// Detect IE version
@@ -108,34 +115,47 @@ function get_useragent_names($useragent)
 
 		$system = ua_search_for_item($systems, $useragent);
 		if ($system == '')
+		{
 			$system = 'Linux';
+		}
 
 		if ($system == 'Mandrake')
+		{
 			$system = 'Mandriva';
+		}
 	}
 	else if ($system == 'Windows')
 	{
 		$version = substr($useragent, strpos($useragent, 'windows nt ') + 11);
 		if (substr($version, 0, 3) == 5.1)
+		{
 			$system = 'Windows XP';
+		}
 		else if (substr($version, 0, 1) == 6)
 		{
 			if (substr($version, 0, 3) == 6.0)
+			{
 				$system = 'Windows Vista';
-
+			}
 			else if (substr($version, 0, 3) == 6.1)
+			{
 				$system = 'Windows 7';
-
+			}
 			else if (substr($version, 0, 3) == 6.2)
+			{
 				$system = 'Windows 8';
-
+			}
 			else if (substr($version, 0, 3) == 6.3)
+			{
 				$system = 'Windows 8.1';
+			}
 		}
 		else if (substr($version, 0, 3) == 10)
 		{
 			if (substr($version, 0, 3) == 10.0)
+			{
 				$system = 'Windows 10';
+			}
 		}
 	}
 	else if ($system == 'Mac')
@@ -151,12 +171,18 @@ function get_useragent_names($useragent)
 		$system = 'iPhone';
 	}
 	else if ($system == 'Windows Phone')
-			$system = 'Windows_Phone';
+	{
+		$system = 'Windows_Phone';
+	}
 
 	if (!$system)
+	{
 		$system = 'unknown';
+	}
 	if (!$browser)
+	{
 		$browser = 'unknown';
+	}
 
 	$result = [
 		'system'			=> $system,
