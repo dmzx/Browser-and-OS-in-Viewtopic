@@ -91,8 +91,8 @@ class listener implements EventSubscriberInterface
 	{
 		$post = $this->request->get_super_global(\phpbb\request\request::SERVER);
 		$sql_data = $event['sql_data'];
-	        if (($event['post_mode'] == 'post') || ($event['post_mode'] == 'reply')) {
-		    $sql_data[POSTS_TABLE]['sql']['user_agent'] =	$post['HTTP_USER_AGENT'];
+			if (($event['post_mode'] == 'post') || ($event['post_mode'] == 'reply')) {
+			$sql_data[POSTS_TABLE]['sql']['user_agent'] =	$post['HTTP_USER_AGENT'];
 		}
 		$event['sql_data'] = $sql_data;
 	}
