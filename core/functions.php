@@ -217,11 +217,8 @@ class functions
 	{
 		$agent = $this->get_useragent_names($useragent);
 
-		$result = '<img src="'.$this->ua_get_filename($agent['system'], 'os').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['system']).'" alt="'.utf8_htmlspecialchars($agent['system']).'" /> <img src="'.$this->ua_get_filename($agent['browser'], 'browser').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['browser'].' '.$agent['browser_version']).'" alt="'.utf8_htmlspecialchars($agent['browser']).'" /><br />';
+		$result = '<img src="'.$this->ua_get_filename($agent['system'], 'os').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['system']).'" alt="'.utf8_htmlspecialchars($agent['system']).'" /> <img src="'.$this->ua_get_filename($agent['browser'], 'browser').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['browser'].' '.$agent['browser_version']).'" alt="'.utf8_htmlspecialchars($agent['browser']).'" /><br>';
 
-		$description = addslashes($useragent) . '\n\nComputer System :\t\t ' . addslashes($agent['system']);
-		$description .= '\nBrowser : \t' . addslashes($agent['browser'].' '.$agent['browser_version']);
-
-		return '<span class="user-agent" onclick="alert(\'' . utf8_htmlspecialchars($description) . '\')">' . $result . '</span>';
+		return $result;
 	}
 }
