@@ -44,11 +44,11 @@ class listener implements EventSubscriberInterface
 	*/
 	static public function getSubscribedEvents()
 	{
-		return array(
+		return [
 			'core.viewtopic_post_rowset_data'	=> 'viewtopic_post_rowset_data',
 			'core.viewtopic_modify_post_row'	=> 'viewtopic_modify_post_row',
 			'core.submit_post_modify_sql_data'	=> 'submit_post_modify_sql_data',
-		);
+		];
 	}
 
 	/**
@@ -62,9 +62,9 @@ class listener implements EventSubscriberInterface
 	{
 		$rowset_data = $event['rowset_data'];
 		$row = $event['row'];
-		$rowset_data = array_merge($rowset_data, array(
+		$rowset_data = array_merge($rowset_data, [
 			'user_agent'			=> $row['user_agent'],
-		));
+		]);
 		$event['rowset_data'] = $rowset_data;
 	}
 
@@ -80,9 +80,9 @@ class listener implements EventSubscriberInterface
 		include_once $this->root_path . 'ext/dmzx/browsericon/includes/user_agent.' . $this->php_ext;
 		$row = $event['row'];
 		$post_row = $event['post_row'];
-		$post_row = array_merge($post_row, array(
+		$post_row = array_merge($post_row, [
 			'USER_AGENT' 			=> get_useragent_icons($row['user_agent']),	// USER AGENT
-		));
+		]);
 		$event['post_row'] = $post_row;
 	}
 

@@ -49,18 +49,18 @@ function get_useragent_names($useragent)
 {
 	if (!$useragent)
 	{
-		$result = array(
+		$result = [
 			'system'			=> 'unknown',
 			'browser'			=> 'unknown',
 			'browser_version'	=> ''
-		);
+		];
 		return $result;
 	}
 
 	$useragent = strtolower($useragent);
 
 	// Browser detection
-	$browsers = array('Edge', 'AWeb', 'Camino', 'Epiphany', 'Galeon', 'HotJava', 'iCab', 'MSIE', 'Chrome', 'Safari',	'Konqueror', 'Flock', 'Iceweasel', 'SeaMonkey', 'Firefox', 'Firebird', 'Netscape', 'Mozilla', 'Opera', 'Maxthon', 'PhaseOut', 'SlimBrowser');
+	$browsers = ['Edge', 'AWeb', 'Camino', 'Epiphany', 'Galeon', 'HotJava', 'iCab', 'MSIE', 'Chrome', 'Safari',	'Konqueror', 'Flock', 'Iceweasel', 'SeaMonkey', 'Firefox', 'Firebird', 'Netscape', 'Mozilla', 'Opera', 'Maxthon', 'PhaseOut', 'SlimBrowser'];
 
 	$browser = ua_search_for_item($browsers, $useragent);
 
@@ -98,13 +98,13 @@ function get_useragent_names($useragent)
 	}
 
 	// System detection
-	$systems = array('Android', 'iPhone', 'Windows Phone', 'Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac');
+	$systems = ['Android', 'iPhone', 'Windows Phone', 'Amiga', 'BeOS', 'FreeBSD', 'HP-UX', 'Linux', 'NetBSD', 'OS/2', 'SunOS', 'Symbian', 'Unix', 'Windows', 'Sun', 'Macintosh', 'Mac'];
 
 	$system = ua_search_for_item($systems, $useragent);
 
 	if ($system == 'Linux')
 	{
-		$systems = array('CentOS', 'Debian', 'Fedora', 'Freespire', 'Gentoo', 'Katonix', 'KateOS', 'Knoppix', 'Kubuntu', 'Linspire', 'Mandriva', 'Mandrake', 'RedHat', 'Slackware', 'Slax', 'Suse', 'Xubuntu', 'Ubuntu', 'Xandros', 'Arch', 'Ark');
+		$systems = ['CentOS', 'Debian', 'Fedora', 'Freespire', 'Gentoo', 'Katonix', 'KateOS', 'Knoppix', 'Kubuntu', 'Linspire', 'Mandriva', 'Mandrake', 'RedHat', 'Slackware', 'Slax', 'Suse', 'Xubuntu', 'Ubuntu', 'Xandros', 'Arch', 'Ark'];
 
 		$system = ua_search_for_item($systems, $useragent);
 		if ($system == '')
@@ -158,11 +158,11 @@ function get_useragent_names($useragent)
 	if (!$browser)
 		$browser = 'unknown';
 
-	$result = array(
+	$result = [
 		'system'			=> $system,
 		'browser'			=> $browser,
 		'browser_version'	=> $browser_version
-	);
+	];
 
 	return $result;
 }

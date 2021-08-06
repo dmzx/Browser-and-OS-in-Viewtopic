@@ -15,21 +15,21 @@ class browsericon_schema extends migration
 {
 	public function update_schema()
 	{
-		return 	array(
-			'add_columns' => array(
-				$this->table_prefix . 'posts' => array(
-					'user_agent' => array('VCHAR:255', null),
-				),
-			),
-		);
+		return 	[
+			'add_columns' => [
+				$this->table_prefix . 'posts' => [
+					'user_agent' => ['VCHAR:255', null],
+				],
+			],
+		];
 	}
 
 	public function revert_schema()
 	{
-		return 	array(
-			'drop_columns' => array(
-				$this->table_prefix . 'posts' => array('user_agent'),
-			),
-		);
+		return 	[
+			'drop_columns' => [
+				$this->table_prefix . 'posts' => ['user_agent'],
+			],
+		];
 	}
 }
