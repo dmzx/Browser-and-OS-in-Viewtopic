@@ -113,44 +113,44 @@ function get_useragent_names($useragent)
 		if ($system == 'Mandrake')
 			$system = 'Mandriva';
 	}
-	elseif ($system == 'Windows')
+	else if ($system == 'Windows')
 	{
 		$version = substr($useragent, strpos($useragent, 'windows nt ') + 11);
 		if (substr($version, 0, 3) == 5.1)
 			$system = 'Windows XP';
-		elseif (substr($version, 0, 1) == 6)
+		else if (substr($version, 0, 1) == 6)
 		{
 			if (substr($version, 0, 3) == 6.0)
 				$system = 'Windows Vista';
 
-			elseif (substr($version, 0, 3) == 6.1)
+			else if (substr($version, 0, 3) == 6.1)
 				$system = 'Windows 7';
 
-			elseif (substr($version, 0, 3) == 6.2)
+			else if (substr($version, 0, 3) == 6.2)
 				$system = 'Windows 8';
 
-			elseif (substr($version, 0, 3) == 6.3)
+			else if (substr($version, 0, 3) == 6.3)
 				$system = 'Windows 8.1';
 		}
-		elseif (substr($version, 0, 3) == 10)
+		else if (substr($version, 0, 3) == 10)
 		{
 			if (substr($version, 0, 3) == 10.0)
 				$system = 'Windows 10';
 		}
 	}
-	elseif ($system == 'Mac')
+	else if ($system == 'Mac')
 	{
 		$system = 'Macintosh';
 	}
-	elseif ($system == 'Android')
+	else if ($system == 'Android')
 	{
 		$system = 'Android';
 	}
-	elseif ($system == 'iPhone')
+	else if ($system == 'iPhone')
 	{
 		$system = 'iPhone';
 	}
-	elseif ($system == 'Windows Phone')
+	else if ($system == 'Windows Phone')
 			$system = 'Windows_Phone';
 
 	if (!$system)
