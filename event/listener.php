@@ -9,10 +9,7 @@
 
 namespace dmzx\browsericon\event;
 
-/**
-* @ignore
-*/
-
+use dmzx\browsericon\core\functions;
 use phpbb\request\request;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -21,15 +18,25 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 */
 class listener implements EventSubscriberInterface
 {
+	/** @var functions */
+	protected $functions;
+
 	/** @var request */
 	protected $request;
 
+	/**
+	 * Constructor
+	 * @param functions			$functions
+	 * @param request			$request
+	 */
 	public function __construct(
+		functions $functions,
 		request $request,
 		$phpbb_root_path,
 		$php_ext
 	)
 	{
+		$this->functions = $functions;
 		$this->request = $request;
 		$this->root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
@@ -77,11 +84,10 @@ class listener implements EventSubscriberInterface
 	*/
 	public function viewtopic_modify_post_row($event)
 	{
-		include_once $this->root_path . 'ext/dmzx/browsericon/includes/user_agent.' . $this->php_ext;
 		$row = $event['row'];
 		$post_row = $event['post_row'];
 		$post_row = array_merge($post_row, [
-			'USER_AGENT' 			=> get_useragent_icons($row['user_agent']),	// USER AGENT
+			'USER_AGENT' 			=> $this->functions->get_useragent_icons($row['user_agent']),	// USER AGENT
 		]);
 		$event['post_row'] = $post_row;
 	}
@@ -95,11 +101,11 @@ class listener implements EventSubscriberInterface
 	*/
 	public function submit_post_modify_sql_data($event)
 	{
-		$post = $this->request->get_super_global(request::SERVER);
+		$post = $this->request->server('HTTP_USER_AGENT');
 		$sql_data = $event['sql_data'];
 		if (($event['post_mode'] == 'post') || ($event['post_mode'] == 'reply'))
 		{
-			$sql_data[POSTS_TABLE]['sql']['user_agent'] =	$post['HTTP_USER_AGENT'];
+			$sql_data[POSTS_TABLE]['sql']['user_agent'] = $post;
 		}
 		$event['sql_data'] = $sql_data;
 	}
