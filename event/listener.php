@@ -12,6 +12,8 @@ namespace dmzx\browsericon\event;
 /**
 * @ignore
 */
+
+use phpbb\request\request;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -19,10 +21,14 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 */
 class listener implements EventSubscriberInterface
 {
-	/** @var \phpbb\request\request */
+	/** @var request */
 	protected $request;
 
-	public function __construct(\phpbb\request\request $request, $phpbb_root_path, $php_ext)
+	public function __construct(
+		request $request,
+		$phpbb_root_path,
+		$php_ext
+	)
 	{
 		$this->request = $request;
 		$this->root_path = $phpbb_root_path;
@@ -89,7 +95,7 @@ class listener implements EventSubscriberInterface
 	*/
 	public function submit_post_modify_sql_data($event)
 	{
-		$post = $this->request->get_super_global(\phpbb\request\request::SERVER);
+		$post = $this->request->get_super_global(request::SERVER);
 		$sql_data = $event['sql_data'];
 			if (($event['post_mode'] == 'post') || ($event['post_mode'] == 'reply')) {
 			$sql_data[POSTS_TABLE]['sql']['user_agent'] =	$post['HTTP_USER_AGENT'];

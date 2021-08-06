@@ -9,7 +9,9 @@
 
 namespace dmzx\browsericon\migrations;
 
-class browsericon_schema extends \phpbb\db\migration\migration
+use phpbb\db\migration\migration;
+
+class browsericon_schema extends migration
 {
 	public function update_schema()
 	{
