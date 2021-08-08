@@ -9,24 +9,24 @@
 
 namespace dmzx\browsericon\core;
 
-use phpbb\user;
+use phpbb\language\language;
 
 class functions
 {
-	/** @var user */
-	protected $user;
+	/** @var language\ */
+	protected $language;
 
 	/**
 	* Constructor
 	*
-	* @param user	$user
+	* @param language	$language
 	*
 	*/
 	public function __construct(
-		user $user
+		language $language
 	)
 	{
-		$this->user	= $user;
+		$this->language	= $language;
 	}
 
 	public function ua_get_filename($name, $folder)
@@ -40,7 +40,7 @@ class functions
 		$name = str_replace(' ', '', $name); // remove spaces
 		$name = preg_replace('/[^a-z0-9_]/', '', $name); // remove special characters
 
-		return 'ext/dmzx/browsericon/images/user_agent/'.$folder.'/'.$name.'.png';
+		return 'ext/dmzx/browsericon/images/user_agent/' . $folder . '/' . $name . '.png';
 	}
 
 	/*
@@ -171,7 +171,7 @@ class functions
 			{
 				if (substr($version, 0, 3) == 10.0)
 				{
-					$system = 'Windows 10';
+					$system = $this->language->lang('DMZX_BROWSERICON_WINDOWS_10');
 				}
 			}
 		}
@@ -217,7 +217,7 @@ class functions
 	{
 		$agent = $this->get_useragent_names($useragent);
 
-		$result = '<img src="'.$this->ua_get_filename($agent['system'], 'os').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['system']).'" alt="'.utf8_htmlspecialchars($agent['system']).'" /> <img src="'.$this->ua_get_filename($agent['browser'], 'browser').'" style="cursor: pointer" title="'.utf8_htmlspecialchars($agent['browser'].' '.$agent['browser_version']).'" alt="'.utf8_htmlspecialchars($agent['browser']).'" /><br>';
+		$result = '<img src="' . $this->ua_get_filename($agent['system'], 'os') . '" style="cursor: pointer" title="' . utf8_htmlspecialchars($agent['system']) . '" alt="' . utf8_htmlspecialchars($agent['system']) . '" /> <img src="' . $this->ua_get_filename($agent['browser'], 'browser') . '" style="cursor: pointer" title="' . utf8_htmlspecialchars($agent['browser'] . ' ' . $agent['browser_version']) . '" alt="' . utf8_htmlspecialchars($agent['browser']) . '" /><br>';
 
 		return $result;
 	}

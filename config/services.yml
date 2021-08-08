@@ -4,11 +4,12 @@ services:
         arguments:
             - '@dmzx.browsericon.core.functions'
             - '@request'
+            - '@language'
             - '%core.root_path%'
             - '%core.php_ext%'
         tags:
             - { name: 'event.listener' }
     dmzx.browsericon.core.functions:
-        class: dmzx\browsericon\core\functions
+        class: 'dmzx\browsericon\core\functions'
         arguments:
-          - '@user'
+          - '@language'

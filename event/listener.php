@@ -11,6 +11,7 @@ namespace dmzx\browsericon\event;
 
 use dmzx\browsericon\core\functions;
 use phpbb\request\request;
+use phpbb\language\language;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
@@ -24,20 +25,26 @@ class listener implements EventSubscriberInterface
 	/** @var request */
 	protected $request;
 
+	/** @var language */
+	protected $language;
+
 	/**
 	 * Constructor
 	 * @param functions			$functions
 	 * @param request			$request
+	 * @param language			$language
 	 */
 	public function __construct(
 		functions $functions,
 		request $request,
+		language $language,
 		$phpbb_root_path,
 		$php_ext
 	)
 	{
 		$this->functions = $functions;
 		$this->request = $request;
+		$this->language	= $language;
 		$this->root_path = $phpbb_root_path;
 		$this->php_ext = $php_ext;
 	}
@@ -67,6 +74,9 @@ class listener implements EventSubscriberInterface
 	*/
 	public function viewtopic_post_rowset_data($event)
 	{
+		// Add our language file
+		$this->language->add_lang('common', 'dmzx/browsericon');
+
 		$rowset_data = $event['rowset_data'];
 		$row = $event['row'];
 		$rowset_data = array_merge($rowset_data, [
