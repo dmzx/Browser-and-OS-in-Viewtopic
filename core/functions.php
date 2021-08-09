@@ -9,8 +9,6 @@
 
 namespace dmzx\browsericon\core;
 
-use phpbb\language\language;
-
 class functions
 {
 	protected $_agent;
