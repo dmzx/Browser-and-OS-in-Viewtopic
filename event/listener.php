@@ -11,7 +11,6 @@ namespace dmzx\browsericon\event;
 
 use dmzx\browsericon\core\functions;
 use phpbb\request\request;
-use phpbb\language\language;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 /**
