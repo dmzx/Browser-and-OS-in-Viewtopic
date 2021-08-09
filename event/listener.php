@@ -96,8 +96,29 @@ class listener implements EventSubscriberInterface
 	{
 		$row = $event['row'];
 		$post_row = $event['post_row'];
+
+		$this->functions->setUserAgent($row['user_agent']);
+		$browser = $this->functions->getBrowser();
+		$brows = str_replace(' ', '', strtolower($browser)); // remove spaces
+		$brows = preg_replace('/[^a-z0-9_]/', '', $brows); // remove special characters
+		$browser_version =	$this->functions->getVersion();
+		$browser_name = $this->functions->getName();
+
+		if ($browser_name !== 'unknown')
+		{
+			$browser = $browser_name;
+			$browser_version = '';
+		}
+
+		$browser_image = '<img src="ext/dmzx/browsericon/styles/prosilver/theme/images/browsers/' . $brows . '.png" alt="' . $browser . '" style="cursor: pointer" title="' . $browser . ' ' . $browser_version . '" />';
+
+		$platform = $this->functions->getPlatform();
+		$plat = str_replace(' ', '', strtolower($platform)); // remove spaces
+		$plat = preg_replace('/[^a-z0-9_]/', '', $plat); // remove special characters
+		$platform_image = '<img src="ext/dmzx/browsericon/styles/prosilver/theme/images/os/' . $plat . '.png" alt="' . $platform . '" style="cursor: pointer" title="' . $platform . '"/>';
+
 		$post_row = array_merge($post_row, [
-			'USER_AGENT' => $this->functions->get_useragent_icons($row['user_agent']),	// USER AGENT
+			'USER_AGENT' => $platform_image . ' ' . $browser_image,
 		]);
 		$event['post_row'] = $post_row;
 	}
