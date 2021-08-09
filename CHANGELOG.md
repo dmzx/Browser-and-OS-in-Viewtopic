@@ -5,7 +5,6 @@
 - Changed code to core/functions.
 - Code update.
 - Code cleanup.
-- Added language file.
 
 ### 1.0.2 - 2019-11-04
 
