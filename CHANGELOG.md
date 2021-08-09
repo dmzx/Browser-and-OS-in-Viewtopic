@@ -3,6 +3,7 @@
 ### 1.0.3 - 2021-08-06
 
 - Changed code to core/functions.
+- Changed browser/os functions.
 - Code update.
 - Code cleanup.
 
